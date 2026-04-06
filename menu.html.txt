@@ -1,0 +1,178 @@
+<!DOCTYPE html> <!-- Define que o documento � HTML5 -->
+<html lang="pt-br"> <!-- Define o idioma da p�gina -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Define o conjunto de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade -->
+    <title>Modelo de Site</title> <!-- T�tulo da aba do navegador -->
+
+    <style>
+        /* Reset b�sico para remover margens padr�o */
+        * {
+            margin: 0; /* Remove margens */
+            padding: 0; /* Remove espa�amentos */
+            box-sizing: border-box; /* Mant�m tamanho correto dos elementos */
+            font-family: Arial, sans-serif; /* Define fonte padr�o */
+        }
+
+        /* Estilo do corpo da p�gina */
+        body {
+            background: #f4f6f9; /* Cor de fundo clara */
+        }
+
+        /* MENU SUPERIOR */
+        nav {
+            background: #1e293b; /* Cor escura moderna */
+            padding: 15px; /* Espa�amento interno */
+            position: fixed; /* Fixa o menu no topo */
+            width: 100%; /* Ocupa toda largura */
+            top: 0; /* Alinha no topo */
+        }
+
+        /* Lista do menu */
+        nav ul {
+            list-style: none; /* Remove marcadores */
+            display: flex; /* Deixa itens lado a lado */
+            justify-content: center; /* Centraliza */
+            gap: 30px; /* Espa�o entre itens */
+        }
+
+        /* Links do menu */
+        nav ul li a {
+            text-decoration: none; /* Remove sublinhado */
+            color: white; /* Cor do texto */
+            font-weight: bold; /* Negrito */
+            padding: 8px 15px; /* Espa�amento */
+            transition: 0.3s; /* Anima��o suave */
+            border-radius: 8px; /* Bordas arredondadas */
+        }
+
+        /* Efeito ao passar o mouse */
+        nav ul li a:hover {
+            background: #3b82f6; /* Azul moderno */
+        }
+
+        /* �rea principal */
+        .container {
+            margin-top: 100px; /* Espa�o por causa do menu fixo */
+            padding: 20px; /* Espa�amento interno */
+            text-align: center; /* Centraliza conte�do */
+        }
+
+        /* T�tulo */
+        h1 {
+            margin-bottom: 20px; /* Espa�o abaixo */
+            color: #1e293b; /* Cor do texto */
+        }
+
+        /* Lista numerada */
+        ol {
+            background: white; /* Fundo branco */
+            padding: 20px; /* Espa�amento */
+            border-radius: 10px; /* Borda arredondada */
+            width: 60%; /* Largura */
+            margin: auto; /* Centraliza */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra leve */
+            text-align: left; /* Alinha texto � esquerda */
+        }
+
+        /* Itens da lista */
+        ol li {
+            margin: 10px 0; /* Espa�amento entre itens */
+            font-size: 18px; /* Tamanho da fonte */
+        }
+
+        /* Classe ativa do menu */
+        .ativo {
+            background: #3b82f6; /* Destaque azul */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU SUPERIOR -->
+    <nav>
+        <ul>
+            <!-- Link Home -->
+            <li><a href="#" onclick="mudarConteudo('home')" id="homeLink">Home</a></li>
+
+            <!-- Link Produtos -->
+            <li><a href="#" onclick="mudarConteudo('produtos')" id="produtosLink">Produtos</a></li>
+
+            <!-- Link Contatos -->
+            <li><a href="#" onclick="mudarConteudo('contato')" id="contatoLink">Contatos</a></li>
+        </ul>
+    </nav>
+
+    <!-- CONTE�DO PRINCIPAL -->
+    <div class="container">
+        <!-- T�tulo din�mico -->
+        <h1 id="titulo">Bem-vindo ao Site</h1>
+
+        <!-- Lista de conte�do -->
+        <ol id="lista">
+            <li>Exemplo de dado 1</li>
+            <li>Exemplo de dado 2</li>
+            <li>Exemplo de dado 3</li>
+        </ol>
+    </div>
+
+    <script>
+        // Fun��o para mudar conte�do da p�gina
+        function mudarConteudo(pagina) {
+
+            // Seleciona elementos do HTML
+            let titulo = document.getElementById("titulo"); // T�tulo
+            let lista = document.getElementById("lista"); // Lista
+
+            // Remove classe ativa de todos os links
+            document.getElementById("homeLink").classList.remove("ativo");
+            document.getElementById("produtosLink").classList.remove("ativo");
+            document.getElementById("contatoLink").classList.remove("ativo");
+
+            // Verifica qual menu foi clicado
+            if (pagina === 'home') {
+
+                // Define t�tulo
+                titulo.innerText = "P�gina Inicial";
+
+                // Define conte�do da lista
+                lista.innerHTML = `
+                    <li>Informa��o geral do site</li>
+                    <li>Apresenta��o da empresa</li>
+                    <li>Objetivo do sistema</li>
+                `;
+
+                // Ativa bot�o clicado
+                document.getElementById("homeLink").classList.add("ativo");
+
+            } else if (pagina === 'produtos') {
+
+                titulo.innerText = "Nossos Produtos";
+
+                lista.innerHTML = `
+                    <li>Produto 1 - Sistema Web</li>
+                    <li>Produto 2 - Aplicativo Mobile</li>
+                    <li>Produto 3 - Banco de Dados</li>
+                `;
+
+                document.getElementById("produtosLink").classList.add("ativo");
+
+            } else if (pagina === 'contato') {
+
+                titulo.innerText = "Contato";
+
+                lista.innerHTML = `
+                    <li>Email: contato@empresa.com</li>
+                    <li>Telefone: (21) 99999-9999</li>
+                    <li>Endere�o: Rio de Janeiro</li>
+                `;
+
+                document.getElementById("contatoLink").classList.add("ativo");
+            }
+        }
+    </script>
+
+</body>
+</html>
